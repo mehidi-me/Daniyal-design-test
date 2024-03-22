@@ -1,4 +1,4 @@
-import Breadcrumb from "./breadcrumb";
+import Breadcrumb from "./Breadcrumb";
 import AboutUs from "./AboutUs";
 import OurMission from "./OurMission";
 import CardView from "../CardView";
