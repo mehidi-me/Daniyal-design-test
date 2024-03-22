@@ -523,14 +523,47 @@ button {
     height: 100%;
   }
   nav.top-nav{
-    display: none;
+    height: 0;
+    visibility: hidden;
+    transition: .5s linear;
+    position: absolute;
+    width: 100%;
+    top: 6rem;
+    gap: 0;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: #3c2f2f96;
+    overflow: hidden;
+  }
+  nav.top-nav.active{
+    visibility: visible;
+    height: 100vh;
+  }
+  nav.top-nav a{
+    background: var(--primary);
+    color: #E5E7EB;
+    padding: 20px 0 20px 20px;
+    width: 100%;
+    font-size: 1.6rem;
+    line-height: 24px;
+    
+  }
+  nav.top-nav .btn{
+    width: 100%;
+    color: #E5E7EB;
+    border-radius: 0;
+    justify-content: start;
+    padding: 20px 0 40px 20px;
+    font-size: 1.6rem;
+    line-height: 24px;
   }
   section{
-    padding: 5rem 0;
+    padding: 5rem 0 ;
   }
   .menu{
     display: block;
     width: 24px;
+    cursor: pointer;
   }
   header{
     padding: 7px 0;
