@@ -1,4 +1,11 @@
+"use client"
 function Footer() {
+  const isBrowser = () => typeof window !== 'undefined'; //The approach recommended by Next.js
+
+  function scrollToTop() {
+      if (!isBrowser()) return;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   return (
     <div>
       <footer>
@@ -92,7 +99,7 @@ function Footer() {
           </div>
         </div>
       </footer>
-      <div className="scroll-to-top">
+      <div className="scroll-to-top" onClick={scrollToTop}>
         <img src="/icons/angle-double-up.svg" alt="" />
       </div>
     </div>
