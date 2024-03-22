@@ -1,24 +1,47 @@
-"use client"
+"use client";
+
+import { useState } from "react";
+
 function Footer() {
-  const isBrowser = () => typeof window !== 'undefined'; //The approach recommended by Next.js
+  const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
 
   function scrollToTop() {
-      if (!isBrowser()) return;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
+  const Accordion = ({ title, children, isActive = false }) => {
+    const [isOpen, setOpen] = useState(isActive);
+    return (
+      <div className="footer-item">
+        <div
+          className={`footer-item-heading ${isOpen ? "open" : ""}`}
+          onClick={() => setOpen(!isOpen)}
+        >
+          <h3>{title}</h3>
+          <img
+            src={isOpen ? `/icons/chevron-up.svg` : `/icons/chevron-down.svg`}
+            alt=""
+          />
+        </div>
+        <div className={`footer-item-details ${isOpen ? "active" : ""}`}>
+          {children}
+        </div>
+      </div>
+    );
+  };
   return (
     <div>
       <footer>
         <div className="container">
           <div className="grid">
-            <div className="footer-item">
-              <h3>USA Underwriter</h3>
+            <Accordion isActive={true} title={"USA Underwriter"}>
               <p>NAIC #: 30457</p>
               <p>P.O. Box 2426</p>
               <p>Rancho Cucamonga, CA, 91729</p>
-            </div>
-            <div className="footer-item">
-              <h3>Underwriting Support</h3>
+            </Accordion>
+            <Accordion title={"Underwriting Support"}>
+              <p>NAIC #: 30457</p>
               <p>
                 <img src="/icons/clock.svg" alt="" />
                 Monday - Friday, 9:00 am - 6:00 pm ET
@@ -31,18 +54,16 @@ function Footer() {
                 <img src="/icons/envelope.svg" alt="" />
                 customerservice@usaunderwriters.com
               </p>
-            </div>
-            <div className="footer-item">
-              <h3>Underwriting Support</h3>
+            </Accordion>
+            <Accordion title={"Policy Suspensions And Coverage Approvals"}>
               <p>
                 <img src="/icons/clock.svg" alt="" />
                 Monday - Friday, 9:00 am - 6:00 pm ET
               </p>
-            </div>
+            </Accordion>
           </div>
           <div className="grid">
-            <div className="footer-item">
-              <h3>Customer Service &amp; Support</h3>
+            <Accordion isActive={true} title="Customer Service &amp; Support">
               <p>
                 <img src="/icons/clock.svg" alt="" />
                 Monday - Friday, 9:00 am - 6:00 pm ET
@@ -55,9 +76,8 @@ function Footer() {
                 <img src="/icons/envelope.svg" alt="" />
                 customerservice@usaunderwriters.com
               </p>
-            </div>
-            <div className="footer-item">
-              <h3>Claims Administration</h3>
+            </Accordion>
+            <Accordion title="Claims Administration">
               <p>
                 <img src="/icons/clock.svg" alt="" />
                 Monday - Friday, 9:00 am - 6:00 pm ET
@@ -70,23 +90,17 @@ function Footer() {
                 <img src="/icons/map-pin.svg" alt="" />
                 P.O. Box 647 | Battle Creek, MI 49016
               </p>
-            </div>
-            <div className="footer-item">
-              <div className="footer-item-heading">
-                <h3>PIP Qualification Question and Submissions for Coverage</h3>
-                <img src="/icons/chevron-down.svg" alt="" />
-              </div>
-              <div className="footer-item-details">
-                <p>
-                  <img src="/icons/phone.svg" alt="" />
-                  +1 (248) 541-2800
-                </p>
-                <p>
-                  <img src="/icons/envelope.svg" alt="" />
-                  customerservice@usaunderwriters.com
-                </p>
-              </div>
-            </div>
+            </Accordion>
+            <Accordion title="PIP Qualification Question and Submissions for Coverage">
+              <p>
+                <img src="/icons/phone.svg" alt="" />
+                +1 (248) 541-2800
+              </p>
+              <p>
+                <img src="/icons/envelope.svg" alt="" />
+                customerservice@usaunderwriters.com
+              </p>
+            </Accordion>
           </div>
         </div>
         <div className="footer-bottom">
