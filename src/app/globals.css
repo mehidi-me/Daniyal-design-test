@@ -192,6 +192,23 @@ nav.top-nav a {
   gap: 10px;
 }
 
+.slick-dots{
+  position: unset !important;
+  margin-top: 20px !important;
+}
+.slick-dots li button:before {
+  height: 15px !important;
+  width: 15px !important;
+  text-indent: -9999px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid var(--gray);
+  opacity: 1;
+  }
+.slick-dots li.slick-active button:before {
+  background-color: var(--gray);
+  }
+
 section.our-features {
   padding-bottom: 0;
 }
@@ -235,7 +252,13 @@ section.our-features {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+ 
 }
+.card-view-item:nth-child(1){
+  margin: 0 1.5rem;
+}
+
+
 
 .card-view-item h3 {
   color: #111928;
@@ -595,6 +618,9 @@ button {
   .hero-main-content-buttons{
     gap: 0;
   }
+  main .slick-dots{
+    display: none !important;
+  }
   .our-features .content{
     flex-direction: column;
     gap: 20px;
@@ -615,8 +641,14 @@ button {
     grid-template-columns: 1fr;
   }
   .card-view-item{
-    min-height: 200px;
+    min-height: 230px;
   }
+  .card-view-item,.card-view-item:nth-child(1){
+    margin: 0 !important;
+  }
+  /* .card-view .slick-dots{
+    margin-top: 0 !important;
+  } */
   .insurance-coverage-bg-image{
     background: transparent;
     height: auto;

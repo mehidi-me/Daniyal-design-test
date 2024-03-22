@@ -1,10 +1,28 @@
 
-
+'use client'
+import Slider from "react-slick";
 function CardView() {
+  const settings = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots:false,
+    responsive: [
+      {
+        breakpoint: 660,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: true
+        }
+      },
+    ]
+  }
   return (
     <section className="card-view">
         <div className="container">
-          <div className="grid card-view-items">
+         
+            <Slider {...settings}>
+            <div>
             <div className="card-view-item">
               <div className="icon">
                 <img src="./icons/card-view-icon.svg" alt="" />
@@ -14,6 +32,8 @@ function CardView() {
                 USA Underwriters offers affordable rates on quality coverage.
               </p>
             </div>
+            </div>
+            <div>
             <div className="card-view-item">
               <div className="icon">
                 <img src="./icons/card-view-icon.svg" alt="" />
@@ -24,6 +44,8 @@ function CardView() {
                 paid and the car is repaired.
               </p>
             </div>
+            </div>
+            <div>
             <div className="card-view-item">
               <div className="icon">
                 <img src="./icons/card-view-icon.svg" alt="" />
@@ -34,7 +56,10 @@ function CardView() {
                 auto insurance solutions.
               </p>
             </div>
-          </div>
+            </div>
+            </Slider>
+            
+          
         </div>
       </section>
   )
